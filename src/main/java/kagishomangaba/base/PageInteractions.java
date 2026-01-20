@@ -17,20 +17,23 @@ public class PageInteractions {
     public PageInteractions(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        int explicitWait = Integer.parseInt(
-                ConfigLoader.getProperties().getProperty("explicitWait")
-        );
-
+        int explicitWait = Integer.parseInt(ConfigLoader.getProperties().getProperty("explicitWait"));
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWait));
     }
+
 
 
     public WebElement waitForElementToBeClickable(WebElement element, String elementName) {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+
     public void waitForElementToAppear(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        } catch (TimeoutException e)  {
+            throw new RuntimeException("Element is not visible: " + locator, e );
+        }
     }
 
     public void waitForWebElementToAppear(WebElement findBy) {

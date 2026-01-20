@@ -17,6 +17,10 @@ target/
 .springBeans
 .sts4-cache
 
+# Screenshots and reports
+/reports/
+/screenshots/
+
 # NetBeans
 /nbproject/private/
 /nbbuild/
