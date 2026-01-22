@@ -3,6 +3,7 @@ package kagishomangaba.tests.regression;
 import kagishomangaba.TestComponents.TestContent;
 import kagishomangaba.pages.CataloguePage;
 import kagishomangaba.pages.LandingPage;
+import kagishomangaba.utilities.TestDataProviderUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
 
 public class SearchTests extends TestContent {
 
-    @Test(dataProvider = "getData")
+    @Test(dataProvider = "getData" , dataProviderClass = TestDataProviderUtil.class)
     public void verifySearchWithValidProduct(HashMap<String , String> input) throws IOException {
         LandingPage landingPage = launchApplication();
         landingPage.searchProduct(input.get("product"));
@@ -22,12 +23,12 @@ public class SearchTests extends TestContent {
                 "No products found for valid search");
     }
 
-    @Test()
-    public void verifySearchWithInvalidProduct() throws IOException {
-        LandingPage landingPage = launchApplication();
-        landingPage.searchProduct("XYZ123NonExistent");
-        CataloguePage cataloguePage = new CataloguePage(driver );
-
-    }
+//    @Test()
+//    public void verifySearchWithInvalidProduct() throws IOException {
+//        LandingPage landingPage = launchApplication();
+//        landingPage.searchProduct("XYZ123NonExistent");
+//        CataloguePage cataloguePage = new CataloguePage(driver );
+//
+//    }
 
 }

@@ -13,9 +13,7 @@ public class JsonReaderUtil{
 
     public static List<HashMap<String, String>> getJsonDataToMap(String filePath) {
         try {
-            String jsonContent = FileUtils.readFileToString(
-                    new File(filePath),
-                    StandardCharsets.UTF_8
+            String jsonContent = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8
             );
 
             ObjectMapper mapper = new ObjectMapper();

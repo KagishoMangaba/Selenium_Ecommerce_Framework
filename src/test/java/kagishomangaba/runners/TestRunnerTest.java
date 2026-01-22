@@ -6,7 +6,7 @@ import kagishomangaba.TestComponents.Retry;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/java/resources/features",
+        features = "src/test/resources/features",
         glue = "kagishomangaba.steps",
         monochrome = true,
 

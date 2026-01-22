@@ -1,15 +1,14 @@
 package kagishomangaba.utilities;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.Properties;
 
-public class ConfigLoader {
+public class ConfigLoaderUtil {
 
     private static Properties properties;
 
-    private ConfigLoader() {}
+    private ConfigLoaderUtil() {}
 
     public static Properties getProperties() {
         if (properties == null) {
@@ -19,17 +18,15 @@ public class ConfigLoader {
     }
 
     private static void loadProperties() {
-        try {
-            String path = Paths.get(
-                    System.getProperty("user.dir"),
-                    "src", "main", "java",
-                    "kagishomangaba", "resources",
-                    "Globaldata.properties"
-            ).toString();
+        try (InputStream input = ConfigLoaderUtil.class.getClassLoader()
+                .getResourceAsStream("config/Globaldata.properties")) {
+
+            if (input == null) {
+                throw new RuntimeException("Unable to find Globaldata.properties in resources!");
+            }
 
             properties = new Properties();
-            FileInputStream fis = new FileInputStream(path);
-            properties.load(fis);
+            properties.load(input);
 
         } catch (IOException e) {
             throw new RuntimeException("Failed to load config file", e);

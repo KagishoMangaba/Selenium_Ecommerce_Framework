@@ -1,6 +1,6 @@
 package kagishomangaba.base;
 
-import kagishomangaba.utilities.ConfigLoader;
+import kagishomangaba.utilities.ConfigLoaderUtil;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,8 +16,7 @@ public class PageInteractions {
 
     public PageInteractions(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
-        int explicitWait = Integer.parseInt(ConfigLoader.getProperties().getProperty("explicitWait"));
+        int explicitWait = Integer.parseInt(ConfigLoaderUtil.getProperties().getProperty("explicitWait"));
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWait));
     }
 

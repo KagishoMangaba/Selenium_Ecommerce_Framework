@@ -2,10 +2,11 @@ package kagishomangaba.pages;
 
 import kagishomangaba.base.PageInteractions;
 import kagishomangaba.base.InputUtil;
-import kagishomangaba.utilities.ConfigLoader;
+import kagishomangaba.utilities.ConfigLoaderUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class LandingPage extends PageInteractions {
     public LandingPage(WebDriver driver ) {
         super(driver);
         this.inputUtil =new InputUtil(super.driver);
+        PageFactory.initElements(driver, this);
     }
 
 
@@ -64,7 +66,7 @@ public class LandingPage extends PageInteractions {
 
 
     public void goTo() {
-        driver.get(ConfigLoader.getProperties().getProperty("url"));
+        driver.get(ConfigLoaderUtil.getProperties().getProperty("url"));
     }
 }
 

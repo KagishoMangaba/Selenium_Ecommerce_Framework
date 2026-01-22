@@ -49,20 +49,17 @@ public final class DriverFactory {
             throw new RuntimeException("Unsupported browser: " + browser);
         }
 
-
-
-
         driverThreadLocal.set(driver);
     }
-
-
-
 
 
 
     public static WebDriver getDriver() {
         return driverThreadLocal.get();
     }
+
+
+
 
     public static void quitDriver() {
         WebDriver driver = driverThreadLocal.get();

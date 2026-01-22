@@ -4,6 +4,7 @@ import kagishomangaba.TestComponents.TestContent;
 import kagishomangaba.pages.CataloguePage;
 import kagishomangaba.pages.LandingPage;
 import kagishomangaba.pages.ShoppingCartPage;
+import kagishomangaba.utilities.TestDataProviderUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +17,8 @@ import java.util.HashMap;
 
 public class CartTests extends TestContent {
 
+
+    @Test(dataProvider = "getData" , dataProviderClass = TestDataProviderUtil.class)
     public void productMatch(HashMap<String , String> input) throws IOException {
 
         LandingPage landingPage = launchApplication();
@@ -29,9 +32,8 @@ public class CartTests extends TestContent {
         Assert.assertTrue(shoppingCartPage.isProductInCart(input.get("product")));
     }
 
-    @Test(dataProvider = "getData")
+    @Test(dataProvider = "getData" , dataProviderClass = TestDataProviderUtil.class)
     public void ProductMisMatch(HashMap<String , String> input) throws IOException {
-
 
 
         LandingPage landingPage = launchApplication();

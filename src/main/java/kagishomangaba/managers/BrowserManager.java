@@ -1,7 +1,7 @@
 package kagishomangaba.managers;
 
 import kagishomangaba.factory.DriverFactory;
-import kagishomangaba.utilities.ConfigLoader;
+import kagishomangaba.utilities.ConfigLoaderUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,7 +14,7 @@ public class BrowserManager {
 
     public static void launchBrowser() {
 
-        Properties prop = ConfigLoader.getProperties();
+        Properties prop = ConfigLoaderUtil.getProperties();
 
         String browser = prop.getProperty("browser", "chrome");
         boolean headless = Boolean.parseBoolean(prop.getProperty("headless", "false"));

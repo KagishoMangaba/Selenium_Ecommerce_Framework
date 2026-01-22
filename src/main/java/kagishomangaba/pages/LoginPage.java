@@ -5,6 +5,7 @@ import kagishomangaba.base.InputUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends PageInteractions {
 
@@ -13,6 +14,7 @@ public class LoginPage extends PageInteractions {
     public LoginPage(WebDriver driver ) {
         super(driver);
         this.inputUtil = new InputUtil(super.driver);
+        PageFactory.initElements(driver, this);
 
     }
 

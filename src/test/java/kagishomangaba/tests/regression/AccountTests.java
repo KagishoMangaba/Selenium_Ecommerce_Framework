@@ -4,14 +4,14 @@ import kagishomangaba.TestComponents.TestContent;
 import kagishomangaba.pages.AccountCreationPage;
 import kagishomangaba.pages.LandingPage;
 import kagishomangaba.pages.LoginPage;
-import org.testng.Assert;
+import kagishomangaba.utilities.TestDataProviderUtil;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 
 public class AccountTests extends TestContent {
 
-    @Test(dataProvider = "getData")
+    @Test(dataProvider = "getData" , dataProviderClass = TestDataProviderUtil.class)
     public void createNewAccount(HashMap<String , String> data) {
         // Launch application
         LandingPage landingPage = launchApplication();
@@ -32,7 +32,7 @@ public class AccountTests extends TestContent {
 
     }
 
-    @Test(dataProvider = "getData")
+    @Test(dataProvider = "getData" , dataProviderClass = TestDataProviderUtil.class)
     public void Login(HashMap<String , String> data)  {
 
         LandingPage landingPage = launchApplication();

@@ -43,7 +43,6 @@ public class BaseTest {
 
 
 
-
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         try {
@@ -52,22 +51,6 @@ public class BaseTest {
         logger.info("Quitting browser");
 
     }
-
-
-    @DataProvider
-    public Object[][] getData() throws IOException {
-
-        List<HashMap<String,String>> data = getJsonDataToMap(System.getProperty("user.dir") + "//src//main//java//kagishomangaba//data//TestData.json");
-        Object[][] arr = new Object[data.size()][1];
-        for (int i = 0; i < data.size(); i++) {
-            arr[i][0] = data.get(i);
-        }
-        return arr;
-
-    }
-
-
-
 
 
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class AccountCreationPage extends PageInteractions {
 
@@ -14,6 +15,7 @@ public class AccountCreationPage extends PageInteractions {
     public AccountCreationPage(WebDriver driver) {
         super(driver);
         this.inputUtil = new InputUtil(super.driver);
+        PageFactory.initElements(driver, this);
 
     }
 

@@ -13,7 +13,7 @@ public class CataloguePage extends PageInteractions {
 
     public CataloguePage(WebDriver driver) {
         super(driver );
-
+        PageFactory.initElements(driver, this);
     }
 
 

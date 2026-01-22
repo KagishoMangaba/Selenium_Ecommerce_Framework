@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import kagishomangaba.TestComponents.BaseTest;
 import kagishomangaba.TestComponents.TestContent;
 import kagishomangaba.factory.DriverFactory;
+import kagishomangaba.managers.BrowserManager;
 import kagishomangaba.pages.CataloguePage;
 import kagishomangaba.pages.LandingPage;
 import kagishomangaba.pages.ShoppingCartPage;
@@ -20,12 +21,16 @@ public class CartVerification extends TestContent {
 
     @Given("the user is on the Incredible Connection landing page")
     public void i_have_landed_on_Incredible_Connection() {
-
+        // Make sure driver exists
         if (driver == null) {
-            driver = DriverFactory.getDriver();
+            BrowserManager.launchBrowser();             // launch browser
+            driver = DriverFactory.getDriver();         // assign driver
         }
-        landingPage = launchApplication();
+
+        landingPage = new TestContent().launchApplication();
+        // driver is now valid
     }
+
 
     @When("the user searches for {string}")
     public void i_am_searching_for_a_product_on_search_bar(String productName) {
